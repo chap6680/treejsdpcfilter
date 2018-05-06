@@ -1,8 +1,9 @@
-// LEFT OFF - chaging pagination Number active class based on selection
+// LEFT OFF - 
 let getAllStudents = document.getElementsByClassName("student-item");
-console.log(getAllStudents);
+console.log("total:");
+console.log(getAllStudents.length);
 const getAllStudentsNum = getAllStudents.length;
-const getPaginationNum = Math.floor(getAllStudentsNum/10);
+const getPaginationNum = Math.floor(getAllStudentsNum/10)+1;
 
 
 [].forEach.call(document.querySelectorAll('.student-item'), function (el) {
@@ -15,16 +16,37 @@ function updateStudent10(getBlock) {
 	[].forEach.call(document.querySelectorAll('.student-item'), function (el) {
 		el.style.display = 'none';
 	});
-	for (let i = getBlock-1; i <= getBlock + 8; i++) {
+	for (let i = getBlock-10; i <= Math.min(getBlock -1,getAllStudentsNum-1); i++) {
 		/* console.log(i); */
 		document.getElementsByClassName('student-item')[i].style.display = 'block';
-	}
-/* 	for (let j = 1; j <= getPaginationNum; j++) { 
+	};
+	let getPaginationNav = ((getBlock/10) - 1);
+	let currentSet10 = Math.trunc(getAllStudentsNum / getBlock);
+	let getPaginationNavALL = document.querySelectorAll(".pagination .li a");
+	
+	console.log(getPaginationNav);
+	[].forEach.call(document.querySelectorAll('.pagination li a'), function (el) {
+		el.className = '';
+	});
+/* 	document.querySelectorAll(".pagination li a")[(getBlock/10)-1].className = 'active'
+ */	document.querySelectorAll(".pagination li a")[getPaginationNav].className = 'active'
 
-	} */
 };	
 
-updateStudent10(30);
+/*	[].forEach.call(document.querySelectorAll('.pagination li'), function (el) {
+		el.className = '';
+	});
+	 	for (let j = 1; j <= getPaginationNum; j++) { 
+		if (j === currentSet10) {
+			getPaginationNav.className = "active";
+		}
+		else { 
+			getPaginationNav.className = "";
+		}
+		getPaginationNav = document.querySelector(".pagination li").nextSibling.firstChild;
+
+	} */ 
+
 
 
 /* function createPagination() { */
@@ -38,7 +60,7 @@ let createPaginationString = '<ul>';
 		};
 		createPaginationString += i + '</a></li>'
 	};	
-createPaginationString += '<li><a href="#" onClick="updateStudent10(30)">X</a></li>';
+/* createPaginationString += '<li><a href="#" onClick="updateStudent10(30)">X</a></li>'; */
 createPaginationString += ' </ul> </div>';
 
 document.getElementsByClassName('pagination')[0].innerHTML = createPaginationString;
@@ -49,7 +71,7 @@ document.getElementsByClassName('pagination')[0].innerHTML = createPaginationStr
 console.log(y);
 let yy = y.firstChild;
 console.log(yy); */
-
+/* 
 let x = document.querySelector(".pagination li").firstChild;
 x.className = "";
 console.log('x');
@@ -58,3 +80,6 @@ x = document.querySelector(".pagination li").nextSibling.firstChild;
 console.log('nextsib');
 console.log(x);
 x.className = "active";
+
+ */
+updateStudent10(30);
