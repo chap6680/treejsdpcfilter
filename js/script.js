@@ -40,15 +40,14 @@ function updateStudent10(getBlock) {
 };	
 
 
-/* function createPagination() { */
+/* function createPagination() OLD WORKING { */
 	let createPaginationString = '<ul>';
 	for (let i = 1; i <= getPaginationNum; i++) {  
 		createPaginationString = createPaginationString + '<li>';
 		if (i === 1) {
-			createPaginationString += '<a class="active" value=1 href="#" onClick="updateStudent10('+10*i+')">'
+			createPaginationString += '<a class="active" value=1 href="#">'
 		} else {
-/* 			createPaginationString += '<a class="" href="#" onClick="updateStudent10('+10*i+')">' */
-createPaginationString += '<a class="" href="#" id="updateStudent'+10*i+'" value='+i+'>'			
+			createPaginationString += '<a class="" href="#" value='+i+'>'			
 		};
 		createPaginationString += i + '</a></li>'
 	};	
@@ -80,7 +79,11 @@ function studentSearch() {
 	console.log(picked);
 }
 function cluelesseventlistener(evt) { 
-	alert(evt.target.innerText);
+	let tempR = evt.target.innerText * 10;
+/* 	alert(evt.target.innerText);
+ */	console.log('innertext');
+	console.log(tempR);
+	updateStudent10(tempR);
 };
 
 let tempP = document.querySelectorAll('.pagination ul li');
@@ -210,3 +213,20 @@ document.getElementsByClassName('student-item')[0].style.display = 'block';
 
 */  
 
+/* function createPagination() OLD WORKING { 
+	let createPaginationString = '<ul>';
+	for (let i = 1; i <= getPaginationNum; i++) {  
+		createPaginationString = createPaginationString + '<li>';
+		if (i === 1) {
+			createPaginationString += '<a class="active" value=1 href="#" onClick="updateStudent10('+10*i+')">'
+		} else {
+createPaginationString += '<a class="" href="#" id="updateStudent'+10*i+'" value='+i+'>'			
+		};
+		createPaginationString += i + '</a></li>'
+	};	
+createPaginationString += ' </ul> </div>';
+
+document.getElementsByClassName('pagination')[0].innerHTML = createPaginationString;
+
+// end of pagination buttons
+*/
